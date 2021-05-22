@@ -1,2 +1,4 @@
 node_modules/
 src/utils/config.json
+package-lock.json
+.env

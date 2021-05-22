@@ -1,0 +1,14 @@
+{
+  "name": "bedwars-guild-bot-v2",
+  "version": "1.0.0",
+  "description": "Bedwars Guild Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maurits Wilke",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}

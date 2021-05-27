@@ -1,6 +1,6 @@
 {
     "name": "Bedwars Guild Bot",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "The Official Bedwars Guild Bot",
     "prefix": "!",
 
@@ -13,6 +13,8 @@
     },
 
     "changelog": [
-        "Created the bot!"
+        "Command handler!",
+        "Event handler!",
+        "``o r g a n i s a t i o n``"
     ]
 }

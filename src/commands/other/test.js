@@ -14,6 +14,10 @@ module.exports = {
     cooldown: 0 * 1000,
 
     async run (client, message, args){
-        message.channel.send(`TESTING COMMAND | ${args}`)
+        if(args[0].toLowerCase() == "error"){
+            throw new Error("manual error")
+        }else{
+            message.channel.send(`\`\`Testing\`\`: ${args}`)
+        }
     }
 }

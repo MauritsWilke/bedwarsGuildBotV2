@@ -14,7 +14,7 @@ module.exports = {
     owner: false,
     cooldown: 0 * 1000,
 
-    async run (client, message, Discord){
+    async run (client, message, args, Discord){
         const newEmbed = new Discord.MessageEmbed()
             .setColor(config.colours.default)
             .setThumbnail(client.user.displayAvatarURL())

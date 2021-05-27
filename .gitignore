@@ -2,3 +2,7 @@ node_modules/
 src/utils/config.json
 package-lock.json
 .env
+jsdoc.js
+src/utils/api/challonge/config.json
+oldCodeSnippits.js
+src/templates/

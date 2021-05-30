@@ -9,9 +9,10 @@ module.exports = {
     description: "Get your index score. \n (star × fkdr²)/10",
     example: `index <ign>`,
     aliases: [
-        
+        "threatindex",
+        "inde"
     ],
-    args: false,
+    args: true,
     owner: false,
     cooldown: 0 * 1000,
 

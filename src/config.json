@@ -1,10 +1,11 @@
 {
     "name": "Bedwars Guild Bot",
-    "version": "0.1.0",
+    "version": "0.5.0",
     "description": "The Official Bedwars Guild Bot",
     "prefix": "!",
 
     "ownerID": "378874450105466880",
+    "deleteTime": 15000,
 
     "colours": {
         "error": "#FF5555",
@@ -18,9 +19,14 @@
     },
 
     "changelog": [
-        "Command handler!",
-        "Event handler!",
-        "``o r g a n i s a t i o n``"
+        "**Added**",
+        "``+`` Added commands from the old bot",
+        "``+`` Welcome cards",
+        "``+`` Farewell cards",
+        "``+`` Changed the look of older commands",
+        "``+`` !help command!",
+        "**Removed**",
+        "None! Its the first update"
     ],
 
     "channel": {

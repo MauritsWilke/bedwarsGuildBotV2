@@ -36,12 +36,12 @@ module.exports = {
             .setThumbnail(config.images.success)
             .addFields(
                 { name: '**Description**', value: `${utils.betterText(commandData.description)}`, inline: false},
-                { name: '**Usage**', value: `${utils.betterText(commandData.example)}`, inline: false}
+                { name: '**Usage**', value: `${utils.betterText(config.prefix + commandData.example)}`, inline: false}
             )
             .setTimestamp()
             .setFooter(config.name);
 
-            commandData.aliases.length > 1 ? 
+            !commandData.aliases.length == 0 ? 
             helpEmbed.addField('**Aliases**', `${utils.betterText(commandData.aliases)}`, false) :
             null;
 

@@ -1,6 +1,3 @@
-const config = require('../../config.json')
-const utils = require('../../utils/utils')
-
 module.exports = {
     name: "test",
     description: "Testing complicated stuff",

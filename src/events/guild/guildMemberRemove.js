@@ -1,0 +1,28 @@
+const { createCanvas, loadImage, registerFont } = require('canvas');
+const config = require('../../config.json')
+const canvas = createCanvas(595, 192);
+const ctx = canvas.getContext('2d')
+const leftPadding = 182;
+const fontSize = 23;
+const topPadding = 192 / 2.5;
+const textPadding = fontSize + 15;
+
+registerFont('src/templates/fonts/minecraft.ttf', { family: 'Sans Serif' })
+
+module.exports = async (Discord, client, member) => {
+ 
+    const welcomeCard = await loadImage('src/templates/images/welcomeCard.png');
+    const profilePicture = await loadImage(member.user.displayAvatarURL({ format: 'png' }));
+    
+    ctx.fillStyle = '#FFFFFF';
+    ctx.drawImage(welcomeCard, 0, 0, 595, 192);
+    ctx.drawImage(profilePicture, 35, 32, 128, 128)
+    ctx.font = `${fontSize}px Sans Serif`;
+    ctx.fillText(`We're sorry to see you go,`, leftPadding, topPadding);
+    ctx.fillText(`${member.user.username}`, leftPadding, topPadding + textPadding)
+    ctx.fillText(`Hope to see you again soon!`, leftPadding, topPadding + textPadding * 2);
+
+    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'farewell.png')
+    client.channels.cache.get(config.server.channels.leave).send({ files: [attachment] })
+    .catch(e => console.error(e))
+}

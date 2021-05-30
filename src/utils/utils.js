@@ -25,9 +25,15 @@ function betterText(text){
     return `\`\`${text}\`\``
 }
 
+function NaNtoZero(s){
+    if(isNaN(s)) return '0';
+    return `${s}`;
+}
+
 module.exports = {
     ownerOnly,
     requiresArgs,
-    betterText
+    betterText,
+    NaNtoZero
 }
 

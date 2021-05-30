@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { resolve } = require("path");
+const chalk = require('chalk');
 
 module.exports = (client, Discord) => {
     client.commands = new Discord.Collection();

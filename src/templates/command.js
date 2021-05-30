@@ -3,7 +3,7 @@ const config = require('../../config.json')
 module.exports = {
     name: "",
     description: "",
-    example: `${config.prefix}${this.name}`,
+    example: `example here (no prefix, no command name)`,
     aliases: [
         
     ],

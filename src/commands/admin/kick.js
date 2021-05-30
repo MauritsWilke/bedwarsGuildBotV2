@@ -3,7 +3,7 @@ const config = require('../../config.json')
 module.exports = {
     name: "kick",
     description: "Kick a user",
-    example: `kick @User#1234`,
+    example: `kick <user>`,
     aliases: [
         "schop",
     ],

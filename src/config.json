@@ -12,9 +12,27 @@
         "default": "#3C92FB"
     },
 
+    "images": {
+        "error": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ab0c1e57515093.59d8c6eb16d19.gif",
+        "success": "https://media3.giphy.com/media/dWvd7teAFEhPAM8nOx/200w.gif?cid=82a1493b63myvnqxn0lhf9pzkfz762fbnpqo2v7z94g2mhpr&rid=200w.gif"
+    },
+
     "changelog": [
         "Command handler!",
         "Event handler!",
         "``o r g a n i s a t i o n``"
-    ]
+    ],
+
+    "channel": {
+        "join": "844946158400831551",
+        "leave": "844946158400831551"
+    },
+
+    "server": {
+        "serverID": "844946158400831548",
+        "channels": {
+            "join": "844946158400831551",
+            "leave": "844946158400831551"
+        }
+    }
 }

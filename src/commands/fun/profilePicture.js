@@ -64,9 +64,7 @@ module.exports = {
             ctx.drawImage(templateImage, 0, 0, 20, 20);
 
             //BACKDROP SHADING
-            args[4] == "false" ? null : ctx.drawImage(backdropShading, 0, 0, 20, 20);;
-
-
+            args[4] == "false" ? null : ctx.drawImage(backdropShading, 0, 0, 20, 20);
 
             //BOTTOM LAYER
             ctx.drawImage(playerSkin, 8, 9, 7, 7, 8, 4, 7, 7); //Head (bottom layer)
@@ -89,6 +87,7 @@ module.exports = {
 
             const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'profilePicture.png')
             message.channel.send({ files: [attachment] })
+
         } catch (err) {
             const errorEmbed = new Discord.MessageEmbed()
                 .setColor(config.colours.error)

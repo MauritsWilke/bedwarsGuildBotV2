@@ -19,11 +19,13 @@ module.exports = async (Discord, client, member) => {
     const welcomeCard = await loadImage('src/templates/images/welcomeCard.png');
     const profilePicture = await loadImage(member.user.displayAvatarURL({ format: 'png' }));
     
+    const username = member.user.username.length > 17 ? `${member.user.username.slice(0, 15)}...` : member.user.username;
+
     ctx.fillStyle = '#FFFFFF';
     ctx.drawImage(welcomeCard, 0, 0, 595, 192);
     ctx.drawImage(profilePicture, 35, 32, 128, 128)
     ctx.font = `${fontSize}px Sans Serif`;
-    ctx.fillText(`Welcome  ${member.user.username}`, leftPadding, topPadding);
+    ctx.fillText(`Welcome  ${username}`, leftPadding, topPadding);
     ctx.fillText(`You are our ${memberCount} member`, leftPadding, topPadding + textPadding);
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome.png')

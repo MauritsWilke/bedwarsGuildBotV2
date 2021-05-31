@@ -19,6 +19,7 @@ module.exports = {
     getActiveBoosters,
     playerCounts,
     getPunishments,
+    clearCache
 }
 
 async function keyInfo() {
@@ -102,6 +103,12 @@ async function getPunishments() {
     if (!response.ok) return Promise.reject(`${response.status} ${response.statusText}`);
     const json = await response.json();
     return json;
+}
+
+async function clearCache(){
+    uuidCache = {};
+    flCache = {};
+    playerGuildCache = {};
 }
 
 // 

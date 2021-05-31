@@ -16,7 +16,8 @@ module.exports = {
     getSkin,
     getUsername,
     getNameHistory,
-    getOptifineCape
+    getOptifineCape,
+    clearCache
 }
 
 /**
@@ -126,4 +127,9 @@ async function getOptifineCape(username) {
     if (!username) return Promise.reject(`This function requires an input`);
     if (!username.match(/^[a-z0-9_]*$/i)) return Promise.reject(`${username} is an invalid username`);
     return `http://s.optifine.net/capes/${username}.png`
+}
+
+function clearCache(){
+    uuidCache = {};
+    skinCache = {};
 }

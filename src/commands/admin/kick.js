@@ -7,11 +7,14 @@ module.exports = {
     aliases: [
         "schop",
     ],
-    args: false,
+    args: true,
     owner: false,
     cooldown: 0 * 1000,
 
     async run (client, message, args, Discord){
+
+        //REDO THIS LMAO
+
         if (message.member.permissions.has("KICK_MEMBERS")) {
             const member = message.mentions.users.first();
             args[1] ? reason = args.slice(1).join(' ') : reason = "None";

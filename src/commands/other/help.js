@@ -12,7 +12,7 @@ module.exports = {
     ],
     args: false,
     owner: false,
-    cooldown: 0 * 1000,
+    cooldown: 1 * 1000,
 
     async run (client, message, args, Discord){
         if(!args[0]){

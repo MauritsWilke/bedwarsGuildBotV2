@@ -16,7 +16,7 @@ module.exports = {
     ],
     args: true,
     owner: false,
-    cooldown: 0 * 1000,
+    cooldown: 10 * 1000,
 
     async run(client, message, args, Discord) {
         try {
@@ -53,6 +53,10 @@ module.exports = {
             const templateImage = await loadImage(`src/templates/images/profilePicture/20x20template.png`);
             const skinURL = await mcApi.getSkin(args[0]);
             const playerSkin = await loadImage(skinURL);
+            if(playerSkin.height == 32){
+                message.channel.send("Old skin support will be added later")
+                return;
+            }
             const shadingImage = await loadImage(`src/templates/images/profilePicture/20x20shading.png`);
             const purpleShadingImage = await loadImage(`src/templates/images/profilePicture/20x20pshading.png`);
             const backdropShading = await loadImage(`src/templates/images/profilePicture/backdropshading.png`)
@@ -94,7 +98,5 @@ module.exports = {
                 .setFooter(config.name);
             return message.channel.send(errorEmbed);
         }
-
-
     }
 }

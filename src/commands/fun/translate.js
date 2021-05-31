@@ -9,7 +9,7 @@ module.exports = {
     ],
     args: true,
     owner: false,
-    cooldown: 0 * 1000,
+    cooldown: 2 * 1000,
 
     async run (client, message, args, Discord){
         let msg = args.join(' ');

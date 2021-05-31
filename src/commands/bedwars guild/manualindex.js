@@ -10,9 +10,19 @@ module.exports = {
     ],
     args: true,
     owner: false,
-    cooldown: 0 * 1000,
+    cooldown: 1 * 1000,
 
     async run (client, message, args, Discord){
+
+        if(isNaN(args[0].replace(",",".")) || isNaN(args[1].replace(",","."))){
+            const newEmbed = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(`Invalid input, do ${config.prefix}help manualindex for more info`)
+                .setThumbnail(config.images.error)
+                .setTimestamp()
+                .setFooter(config.name);
+            return message.channel.send(newEmbed)
+        }
         
         let indexScore = (args[0].replace(",",".") * args[1].replace(",",".") * args[1].replace(",","."))/10;
             

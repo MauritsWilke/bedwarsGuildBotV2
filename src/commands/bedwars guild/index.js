@@ -19,6 +19,17 @@ module.exports = {
     async run (client, message, args, Discord){
         try {
             const player = await hyApi.playerStats(args[0]);
+
+            if(!player?.stats?.Bedwars){
+                const errorEmbed = new Discord.MessageEmbed()
+                    .setColor(`#FF5555`)
+                    .setDescription(`${args[0]} has not played bedwars`)
+                    .setThumbnail("https://cdn.discordapp.com/attachments/834039658391928852/834415883454644244/exmark.png")
+                    .setTimestamp()
+                    .setFooter(config.name, client.user.displayAvatarURL());
+                return message.channel.send(errorEmbed)
+            }
+
             
             let starNeeded = FKDRNeeded = '-';
             let star = player.achievements.bedwars_level;

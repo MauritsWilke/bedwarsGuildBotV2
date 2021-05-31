@@ -11,6 +11,8 @@ registerFont('src/templates/fonts/minecraft.ttf', { family: 'Sans Serif' })
 
 module.exports = async (Discord, client, member) => {
 
+    if(member.guild.id !== config.server.serverID) return;
+
     const guild = client.guilds.cache.get(config.server.serverID);
     const memberCount = addSuffix(guild.members.cache.filter(member => !member.user.bot).size); 
     

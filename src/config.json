@@ -3,8 +3,13 @@
     "version": "0.5.0",
     "description": "The Official Bedwars Guild Bot",
     "prefix": "!",
+    "invite": "https://discord.com/api/oauth2/authorize?client_id=845229167041314887&permissions=8&redirect_uri=https%3A%2F%2Fwww.mauritswilke.com&scope=bot",
 
-    "ownerID": "378874450105466880",
+    "owner": {
+        "name": "The Almighty One#3365",
+        "id": "378874450105466880"
+    },
+
     "deleteTime": 15000,
 
     "colours": {
@@ -29,16 +34,11 @@
         "None! Its the first update"
     ],
 
-    "channel": {
-        "join": "844946158400831551",
-        "leave": "844946158400831551"
-    },
-
     "server": {
-        "serverID": "844946158400831548",
+        "serverID": "798114509205929995",
         "channels": {
-            "join": "844946158400831551",
-            "leave": "844946158400831551"
+            "join": "817013751827267584",
+            "leave": "817013751827267584"
         }
     }
 }

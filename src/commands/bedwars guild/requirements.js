@@ -20,6 +20,16 @@ module.exports = {
         try {
             const player = await hyApi.playerStats(args[0]);
 
+            if(!player?.stats?.Bedwars){
+                const errorEmbed = new Discord.MessageEmbed()
+                    .setColor(`#FF5555`)
+                    .setDescription(`${args[0]} has not played bedwars`)
+                    .setThumbnail("https://cdn.discordapp.com/attachments/834039658391928852/834415883454644244/exmark.png")
+                    .setTimestamp()
+                    .setFooter(config.name, client.user.displayAvatarURL());
+                return message.channel.send(errorEmbed)
+            }
+
             let star = player.achievements.bedwars_level;
             let FKDR = player.stats.Bedwars.final_kills_bedwars / player.stats.Bedwars.final_deaths_bedwars;
             let index = (star * FKDR * FKDR)/10;

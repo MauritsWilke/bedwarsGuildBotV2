@@ -28,7 +28,7 @@ module.exports = (Discord, client) => {
         .setFooter(config.name);
 
     (async () => {
-        const user = await client.users.fetch(config.ownerID);
+        const user = await client.users.fetch(config.owner.id);
         user.send(newEmbed);
     })()
 

@@ -10,6 +10,8 @@ const textPadding = fontSize + 15;
 registerFont('src/templates/fonts/minecraft.ttf', { family: 'Sans Serif' })
 
 module.exports = async (Discord, client, member) => {
+
+    if(member.guild.id !== config.server.serverID) return;
  
     const welcomeCard = await loadImage('src/templates/images/welcomeCard.png');
     const profilePicture = await loadImage(member.user.displayAvatarURL({ format: 'png' }));

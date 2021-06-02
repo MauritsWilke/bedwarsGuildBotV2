@@ -22,15 +22,7 @@ module.exports = {
         try {
             // CUSTOM GRADIENT
             if (args[1] && args[2]) {
-                try {
-                    let gradient = ctx.createLinearGradient(0, 20, 0, 0);
-                    const hex1 = args[1].slice(0, 1) == '#' ? args[1] : `#${args[1]}`
-                    const hex2 = args[2].slice(0, 1) == '#' ? args[2] : `#${args[2]}`
-                    gradient.addColorStop(1, hex2)
-                    gradient.addColorStop(0, hex1)
-                    ctx.fillStyle = gradient;
-                    ctx.fillRect(0, 0, 20, 20);
-                } catch (err) {
+                if(!args[1].match(/^[#0-9A-F]+$/i) || !args[2].match(/^[#0-9A-F]+$/i)){
                     const errorEmbed = new Discord.MessageEmbed()
                         .setColor(config.colours.error)
                         .setDescription(`Invalid hex code!\nCheck [hex generator](https://www.color-hex.com/color-wheel/) to generate a valid hex`)
@@ -39,6 +31,14 @@ module.exports = {
                         .setFooter(config.name);
                     return message.channel.send(errorEmbed);
                 }
+
+                let gradient = ctx.createLinearGradient(0, 20, 0, 0);
+                const hex1 = args[1].slice(0, 1) == '#' ? args[1] : `#${args[1]}`
+                const hex2 = args[2].slice(0, 1) == '#' ? args[2] : `#${args[2]}`
+                gradient.addColorStop(1, hex2)
+                gradient.addColorStop(0, hex1)
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 20, 20);
             } 
             //DEFAULT BACKGROUND GRADIENT
             else {

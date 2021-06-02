@@ -44,13 +44,14 @@ module.exports = (Discord, client, message) => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
     // EXECUTION
-    try {
-        command.run(client, message, args, Discord)
-        .catch(err => {
-            console.log(chalk`{red ! ${command.name} failed due to ${err}}`)
-        })
-    } catch (err){
-        console.log(chalk`{red ! ${command.name} failed due to ${err}}`)
-    }
+    command.run(client, message, args, Discord)
+    // try {
+    //     command.run(client, message, args, Discord)
+    //     .catch(err => {
+    //         console.log(chalk`{red ! ${command.name} failed due to ${err}}`)
+    //     })
+    // } catch (err){
+    //     console.log(chalk`{red ! ${command.name} failed due to ${err}}`)
+    // }
 
 }

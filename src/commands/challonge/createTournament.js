@@ -1,8 +1,6 @@
 const config = require('../../config.json');
 const { challonge, toYN, betterText  } = require('../../utils/utils')
 
-let messageCount = 0;
-let abort = false;
 let tournament = {
     name: "none",
     url: null,
@@ -22,7 +20,6 @@ const questions = [
     `What do you want the description of the tournament to be?`
 ]
 const tournamentKeys = Object.keys(tournament);
-let embedFields = [];
 
 module.exports = {
     name: "createtournament",
@@ -36,6 +33,10 @@ module.exports = {
     cooldown: 0 * 1000,
 
     async run(client, message, args, Discord) {
+        let messageCount = 0;
+        let abort = false;
+        let embedFields = [];
+        let lastMessageID;
 
         const tournamentEmbed = new Discord.MessageEmbed()
             .setColor(config.colours.default)
@@ -50,6 +51,8 @@ module.exports = {
 
             const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 30 * 1000 });
             collector.on('collect', message => {
+                message.channel.messages.fetch(lastMessageID).then(msg => msg.delete()).catch(e=>{});
+
                 if (message.content.toLowerCase() == 'stop') {
                     abort = true;
                     collector.stop()
@@ -72,8 +75,9 @@ module.exports = {
                 tournament[messageCount] = message.content;
                 messageCount++;
                 if (messageCount == questions.length) return collector.stop()
-                message.channel.send(questions[messageCount]);
+                message.channel.send(questions[messageCount]).then(m=>lastMessageID = m.id);
                 collector.resetTimer()
+                message.delete()
             });
 
             collector.on('end', collected => {
@@ -98,11 +102,12 @@ module.exports = {
                         description: tournament[6]
                     },
                     callback: (err, data) => {
-                        let embedDescription = "";
-                        for(error in err.errors){
-                            embedDescription += `\`\`${err.errors[error]}\`\`\n`
-                        }
                         if(err){
+                            let embedDescription = "";
+                            const errorArr = err.errors;
+                            for(error in errorArr){
+                                embedDescription += `\`\`${err.errors[error]}\`\`\n`
+                            }
                         const edited = new Discord.MessageEmbed()
                             .setColor(config.colours.error)
                             .setTitle('Tournament Creator')

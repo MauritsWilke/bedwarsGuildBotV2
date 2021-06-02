@@ -15,6 +15,22 @@ module.exports = {
     async run(client, message, args, Discord) {
         challonge.tournaments.index({
             callback: (err, data) => {
+                if(err){
+                    let embedDescription = "";
+                    const errorArr = err.errors;
+                    for(error in errorArr){
+                        embedDescription += `\`\`${err.errors[error]}\`\`\n`
+                    }
+                    const edited = new Discord.MessageEmbed()
+                        .setColor(config.colours.error)
+                        .setTitle('Tournament Creator')
+                        .setDescription(`**Something went wrong:**\n${embedDescription}`)
+                        .setThumbnail(config.images.challonge)
+                        .setTimestamp()
+                        .setFooter(config.name);
+                    message.channel.send(edited);
+                }
+
                 const indexEmbed = new Discord.MessageEmbed()
                     .setColor(config.colours.default)
                     .setTitle(`Your tournaments`)

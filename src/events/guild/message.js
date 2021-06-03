@@ -13,7 +13,7 @@ module.exports = (Discord, client, message) => {
     const command = client.commands.get(commandName) || 
                     client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if(!command) return;
-    if(command.owner && message.author.id !== config.owner.id) return message.channel.send(utils.ownerOnly()).then(m => m.delete({ timeout: 5000})).catch(e =>{});
+    if(command.owner && !config.owner.id.includes(message.author.id)) return message.channel.send(utils.ownerOnly()).then(m => m.delete({ timeout: 5000})).catch(e =>{});
     if(command.args && args.length == 0) return message.channel.send(utils.requiresArgs(command.example));
     
     console.log(chalk`{green > ${command.name} was used in ${message.guild.name} by ${message.author.tag}}`)

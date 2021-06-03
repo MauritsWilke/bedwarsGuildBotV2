@@ -21,17 +21,17 @@ module.exports = {
                     for(error in errorArr){
                         embedDescription += `\`\`${err.errors[error]}\`\`\n`
                     }
-                    const edited = new Discord.MessageEmbed()
+                    const errorEmbed = new Discord.MessageEmbed()
                         .setColor(config.colours.error)
                         .setTitle('Tournament Creator')
                         .setDescription(`**Something went wrong:**\n${embedDescription}`)
                         .setThumbnail(config.images.challonge)
                         .setTimestamp()
                         .setFooter(config.name);
-                    message.channel.send(edited);
+                    message.channel.send(errorEmbed);
                 }
 
-                const indexEmbed = new Discord.MessageEmbed()
+                const tournamentList = new Discord.MessageEmbed()
                     .setColor(config.colours.default)
                     .setTitle(`Your tournaments`)
                     .setThumbnail(config.images.challonge)
@@ -39,9 +39,9 @@ module.exports = {
                     .setFooter(config.name);
 
                 for (tournament in data) {
-                    indexEmbed.addField(data[tournament].tournament.name, `[challonge.com/${data[tournament].tournament.url}](https://www.challonge.com/${data[tournament].tournament.url})`, true)
+                    tournamentList.addField(data[tournament].tournament.name, `[${data[tournament].tournament.id}](https://www.challonge.com/${data[tournament].tournament.url})`, true)
                 }
-                return message.channel.send(indexEmbed);
+                return message.channel.send(tournamentList);
             }
         });
     }

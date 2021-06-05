@@ -19,6 +19,7 @@ module.exports = (Discord, client, message) => {
     console.log(chalk`{green > ${command.name} was used in ${message.guild.name} by ${message.author.tag}}`)
     
     // COOLDOWNS 
+    if(!config.owner.id.includes(message.author.id)){
         if(!cooldowns.has(command.name)){
             cooldowns.set(command.name, new Discord.Collection())
         }
@@ -42,15 +43,17 @@ module.exports = (Discord, client, message) => {
         }
         timestamps.set(message.author.id, currentTime);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-
-    // EXECUTION
-    try {
-        command.run(client, message, args, Discord)
-        .catch(err => {
-            console.log(chalk`{red ! ${command.name} failed due to ${err}}`).then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
-        })
-    } catch (err){
-        console.log(chalk`{red ! ${command.name} failed due to ${err}}`).then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
     }
+    // EXECUTION
+    command.run(client, message, args, Discord)
+
+    // try {
+    //     command.run(client, message, args, Discord)
+    //     .catch(err => {
+    //         console.log(chalk`{red ! ${command.name} failed due to ${err}}`)?.then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
+    //     })
+    // } catch (err){
+    //     console.log(chalk`{red ! ${command.name} failed due to ${err}}`).then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
+    // }
 
 }

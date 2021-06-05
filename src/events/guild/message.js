@@ -45,15 +45,13 @@ module.exports = (Discord, client, message) => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     }
     // EXECUTION
-    command.run(client, message, args, Discord)
-
-    // try {
-    //     command.run(client, message, args, Discord)
-    //     .catch(err => {
-    //         console.log(chalk`{red ! ${command.name} failed due to ${err}}`)?.then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
-    //     })
-    // } catch (err){
-    //     console.log(chalk`{red ! ${command.name} failed due to ${err}}`).then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
-    // }
+    try {
+        command.run(client, message, args, Discord)
+        .catch(err => {
+            console.log(chalk`{red ! ${command.name} failed due to ${err}}`)?.then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
+        })
+    } catch (err){
+        console.log(chalk`{red ! ${command.name} failed due to ${err}}`).then(m=> m.delete({timeout:config.deleteTime}).catch(e=>{}))
+    }
 
 }

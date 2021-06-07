@@ -1,7 +1,6 @@
 const config = require('../../config.json')
 const utils = require('../../utils/utils')
 const chalk = require('chalk');
-const { TeamMember } = require('discord.js');
 
 const cooldowns = new Map();
 

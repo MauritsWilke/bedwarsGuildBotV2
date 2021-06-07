@@ -60,7 +60,7 @@ module.exports = {
             try {
                 let role = message.guild.roles.cache.find(role => role.name === "verified");
                 message.member.roles.add(role.id);
-                message.member.setNickname(player.displayname, "Adding @verified to user");
+                message.member.setNickname(player.displayname, "Adding @verified to user").catch(e=>{});
 
                 const linkedEmbed = new Discord.MessageEmbed()
                     .setColor(config.colours.success)

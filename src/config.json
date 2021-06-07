@@ -1,8 +1,8 @@
 {
     "name": "Bedwars Guild Bot",
-    "version": "0.5.0",
+    "version": "0.7.0",
     "description": "The Official Bedwars Guild Bot",
-    "prefix": "!",
+    "prefix": "d!",
     "invite": "https://discord.com/api/oauth2/authorize?client_id=845229167041314887&permissions=8&redirect_uri=https%3A%2F%2Fwww.mauritswilke.com&scope=bot",
 
     "owner": {
@@ -23,7 +23,8 @@
     "images": {
         "error": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ab0c1e57515093.59d8c6eb16d19.gif",
         "success": "https://cdn.discordapp.com/attachments/844946158400831551/851403861197193226/ezgif-3-6c01e43fd331.gif",
-        "challonge": "https://assets.challonge.com/assets/og-default-9d2c9e67cc219b24e19785afa8d289899116d96512f6096e67f04b854b2d174e.png"        
+        "challonge": "https://assets.challonge.com/assets/og-default-9d2c9e67cc219b24e19785afa8d289899116d96512f6096e67f04b854b2d174e.png"        ,
+        "webhook": "https://cdn.iconscout.com/icon/free/png-256/webhook-555333.png" 
     },
 
     "changelog": [

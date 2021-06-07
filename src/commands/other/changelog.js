@@ -10,14 +10,15 @@ module.exports = {
     args: false,
     owner: false,
     cooldown: 10 * 1000,
-
+    canTakeIGN: false,
+    
     async run (client, message, args, Discord){
         const newEmbed = new Discord.MessageEmbed()
-        .setColor(config.colours.default)
-        .setTitle(`Changelog version ${config.version}`)
-        .setThumbnail(client.user.displayAvatarURL())
-        .setTimestamp()
-        .setFooter(config.name);
+            .setColor(config.colours.default)
+            .setTitle(`Changelog version ${config.version}`)
+            .setThumbnail(client.user.displayAvatarURL())
+            .setTimestamp()
+            .setFooter(config.name);
         
         let description = "";
         for(const changes in config.changelog){

@@ -13,6 +13,7 @@ module.exports = {
     args: false,
     owner: false,
     cooldown: 1 * 1000,
+    canTakeIGN: false,
 
     async run (client, message, args, Discord){
         if(!args[0]){

@@ -15,6 +15,7 @@ module.exports = {
     args: true,
     owner: false,
     cooldown: 5 * 1000,
+    canTakeIGN: true,
 
     async run (client, message, args, Discord){
         try {
@@ -43,7 +44,7 @@ module.exports = {
             index > 30 && daysBetween <= 7 && client.users.cache.find(u => u?.tag === playerDiscord)?.id !== undefined ? colour = '#55FF55' : colour = '#FF5555';
 
             const newEmbed = new Discord.MessageEmbed()
-                .setColor(colours[Math.floor(star/100)])
+                .setColor(colour)
                 .setTitle('Requirement score of ' + player.displayname.replace(/_/g, '\\_'))
                 .setThumbnail(playerHead)
                 .addFields(

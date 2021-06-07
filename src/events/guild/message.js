@@ -1,23 +1,25 @@
 const config = require('../../config.json')
 const utils = require('../../utils/utils')
-const chalk = require('chalk')
+const chalk = require('chalk');
+const { TeamMember } = require('discord.js');
 
 const cooldowns = new Map();
 
 module.exports = (Discord, client, message) => {
+
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-    const args = message.content.slice(config.prefix.length).split(/ +/);
+    let args = message.content.slice(config.prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
 
     const command = client.commands.get(commandName) || 
                     client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if(!command) return;
     if(command.owner && !config.owner.id.includes(message.author.id)) return message.channel.send(utils.ownerOnly()).then(m => m.delete({ timeout: 5000})).catch(e =>{});
-    if(command.args && args.length == 0) return message.channel.send(utils.requiresArgs(command.example));
-    
+    if(command.args && args.length == 0 && !message.member.roles.cache.find(role => role.name === "verified")) return message.channel.send(utils.requiresArgs(command.example));
+    if(message.member.roles.cache.find(role => role.name === "verified") && args.length == 0 && command?.canTakeIGN) args[0] = message.guild.member(message.author.id).nickname
+
     console.log(chalk`{green > ${command.name} was used in ${message.guild.name} by ${message.author.tag}}`)
-    
     // COOLDOWNS 
     if(!config.owner.id.includes(message.author.id)){
         if(!cooldowns.has(command.name)){
@@ -44,6 +46,7 @@ module.exports = (Discord, client, message) => {
         timestamps.set(message.author.id, currentTime);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     }
+
     // EXECUTION
     try {
         command.run(client, message, args, Discord)

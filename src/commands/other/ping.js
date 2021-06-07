@@ -13,6 +13,7 @@ module.exports = {
     args: false,
     owner: false,
     cooldown: 5 * 1000,
+    canTakeIGN: false,
 
     async run (client, message, args, Discord){
         const newEmbed = new Discord.MessageEmbed()

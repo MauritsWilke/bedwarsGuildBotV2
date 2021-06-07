@@ -17,6 +17,7 @@ module.exports = {
     args: true,
     owner: false,
     cooldown: 10 * 1000,
+    canTakeIGN: true,
 
     async run(client, message, args, Discord) {
         try {

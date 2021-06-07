@@ -17,7 +17,7 @@ module.exports = (Discord, client, message) => {
     if(!command) return;
     if(command.owner && !config.owner.id.includes(message.author.id)) return message.channel.send(utils.ownerOnly()).then(m => m.delete({ timeout: 5000})).catch(e =>{});
     if(command.args && args.length == 0 && !message.member.roles.cache.find(role => role.name === "verified")) return message.channel.send(utils.requiresArgs(command.example));
-    if(message.member.roles.cache.find(role => role.name === "verified") && args.length == 0 && command?.canTakeIGN) args[0] = message.guild.member(message.author.id).nickname
+    if(message.member.roles.cache.find(role => role.name === "verified") && args.length == 0 && command?.canTakeIGN) args[0] = message.guild.member(message.author.id).nickname || message.author.username
 
     console.log(chalk`{green > ${command.name} was used in ${message.guild.name} by ${message.author.tag}}`)
     // COOLDOWNS 

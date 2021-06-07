@@ -2,7 +2,7 @@
     "name": "Bedwars Guild Bot",
     "version": "0.5.0",
     "description": "The Official Bedwars Guild Bot",
-    "prefix": "d!",
+    "prefix": "!",
     "invite": "https://discord.com/api/oauth2/authorize?client_id=845229167041314887&permissions=8&redirect_uri=https%3A%2F%2Fwww.mauritswilke.com&scope=bot",
 
     "owner": {
@@ -28,7 +28,8 @@
 
     "changelog": [
         "**Added**",
-        "``+`` Creating tournaments with the bot",
+        "``+`` You can now !verify :D",
+        "``+`` When verified, you can execute commands without inputting an IGN",
         "``+`` Profile picture generating command (!pfp)",
         "``+`` Quickbuy checker of users (!qb)",
         "``+`` !faq was added (same as previous bot)",

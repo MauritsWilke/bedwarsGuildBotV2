@@ -36,7 +36,7 @@ module.exports = {
             let star = player.achievements.bedwars_level;
             let FKDR = player.stats.Bedwars.final_kills_bedwars / player.stats.Bedwars.final_deaths_bedwars;
             let index = (star * FKDR * FKDR)/10;
-            let playerHead = `https://minotar.net/helm/${player.uuid}`
+            let playerHead = `https://minotar.net/helm/${player.uuid}.png`
             if(index < 30){
                 starNeeded = ((30 * 10)/((FKDR*FKDR))).toFixed(2);
                 FKDRNeeded = (Math.sqrt((30 * 10)/star)).toFixed(2);

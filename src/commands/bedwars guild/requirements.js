@@ -34,7 +34,7 @@ module.exports = {
             let star = player.achievements.bedwars_level;
             let FKDR = player.stats.Bedwars.final_kills_bedwars / player.stats.Bedwars.final_deaths_bedwars;
             let index = (star * FKDR * FKDR)/10;
-            let playerHead = `https://minotar.net/helm/${player.uuid}`
+            let playerHead = `https://minotar.net/helm/${player.uuid}.png`
             let daysBetween = Math.floor((new Date() - new Date(player?.lastLogin))/(1000*60*60*24))
             let playerDiscord = (player?.socialMedia?.links?.DISCORD === undefined) ? "Not linked" : player?.socialMedia?.links?.DISCORD;
             

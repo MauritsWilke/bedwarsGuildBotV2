@@ -1,0 +1,52 @@
+const config = require('../../config.json')
+const { getUUID } = require('../../utils/api/mojang')
+const { betterText } = require(`../../utils/utils`)
+const fetch = require('node-fetch');
+
+module.exports = {
+    name: "uuid",
+    description: "Get a player's uuid",
+    example: `uuid <ign>`,
+    aliases: [
+        
+    ],
+    args: false,
+    owner: false,
+    cooldown: 10 * 1000,
+    canTakeIGN: true,
+
+    async run (client, message, args, Discord){
+        try{
+            
+
+            const playerUUID = await getUUID(args[0]).catch(e=>{
+                const errorEmbed = new Discord.MessageEmbed()
+                  .setColor(config.colours.error)
+                  .setDescription(`Error: ${betterText(e)}\nType ${config.prefix}help uuid to see more info`)
+                  .setThumbnail(config.images.error)
+                  .setTimestamp()
+                  .setFooter(config.name, client.user.displayAvatarURL());
+                return message.channel.send(errorEmbed)
+            })
+
+            const uuidEmbed = new Discord.MessageEmbed()
+              .setColor(config.colours.default)
+              .addFields(
+                { name: `**UUID of ${args[0]}**`, value: `${playerUUID}`, inline: false }
+              ) 
+              .setThumbnail(`https://minotar.net/helm/${playerUUID}.png`)
+              .setTimestamp()
+              .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(uuidEmbed)
+
+        }catch(e){
+            const errorEmbed = new Discord.MessageEmbed()
+                  .setColor(config.colours.error)
+                  .setDescription(`Error: ${betterText(e)}\nType ${config.prefix}help uuid to see more info`)
+                  .setThumbnail(config.images.error)
+                  .setTimestamp()
+                  .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(errorEmbed)
+        }
+    }
+}

@@ -18,16 +18,6 @@ module.exports = {
     async run (client, message, args, Discord){
       try{
         const playerUUID = await getUUID(args[0])
-      }catch(e){
-          const errorEmbed = new Discord.MessageEmbed()
-            .setColor(config.colours.error)
-            .setDescription(`Error: ${betterText(e)}\nType ${config.prefix}help uuid to see more info`)
-            .setThumbnail(config.images.error)
-            .setTimestamp()
-            .setFooter(config.name, client.user.displayAvatarURL());
-          return message.channel.send(errorEmbed);
-      }
-
         const uuidEmbed = new Discord.MessageEmbed()
           .setColor(config.colours.default)
           .setTitle('UUID Converting')
@@ -39,5 +29,14 @@ module.exports = {
           .setTimestamp()
           .setFooter(config.name, client.user.displayAvatarURL());
         return message.channel.send(uuidEmbed)
+      }catch(e){
+          const errorEmbed = new Discord.MessageEmbed()
+            .setColor(config.colours.error)
+            .setDescription(`Error: ${betterText(e)}\nType ${config.prefix}help uuid to see more info`)
+            .setThumbnail(config.images.error)
+            .setTimestamp()
+            .setFooter(config.name, client.user.displayAvatarURL());
+          return message.channel.send(errorEmbed);
+      }
     }
 }

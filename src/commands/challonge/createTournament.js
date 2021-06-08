@@ -71,7 +71,7 @@ module.exports = {
                     .addFields(embedFields)
                     .setTimestamp()
                     .setFooter(config.name);
-                m.edit(edited).catch(e => { });
+                m.edit(edited).catch(e => {});
 
                 tournament[messageCount] = message.content;
                 messageCount++;

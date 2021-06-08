@@ -1,14 +1,14 @@
 const config = require('../../config.json')
 
 module.exports = {
-    name: "",
-    description: "",
-    example: `example here (no prefix)`,
+    name: "gettournament",
+    description: "Retrieve information about a tournament",
+    example: `gettournament <id>`,
     aliases: [
         
     ],
-    args: false,
-    owner: false,
+    args: true,
+    owner: true,
     cooldown: 0 * 1000,
     canTakeIGN: false,
 

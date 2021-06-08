@@ -1,6 +1,8 @@
 node_modules/
 package-lock.json
 .env
-jsdoc.js
 oldCodeSnippits.js
 src/tests/
+.vscode/
+jsdoc.json
+Procfile

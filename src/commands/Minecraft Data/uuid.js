@@ -31,8 +31,10 @@ module.exports = {
 
             const uuidEmbed = new Discord.MessageEmbed()
               .setColor(config.colours.default)
+              .setTitle('UUID Converting')
               .addFields(
-                { name: `**UUID of ${args[0]}**`, value: `${playerUUID}`, inline: false }
+                { name: `**Username**`, value: `${betterText(args[0])}`, inline: false },
+                { name: `**UUID**`, value: `${betterText(`${playerUUID}`)}`, inline: false }
               ) 
               .setThumbnail(`https://minotar.net/helm/${playerUUID}.png`)
               .setTimestamp()

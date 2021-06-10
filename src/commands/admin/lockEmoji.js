@@ -5,7 +5,7 @@
 //     description: "Limit an emoji to only certain roles",
 //     example: `lockemoji`,
 //     aliases: [
-        
+
 //     ],
 //     args: false,
 //     owner: false,

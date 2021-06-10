@@ -2,9 +2,9 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const config = require('../../config.json')
 const canvas = createCanvas(595, 192);
 const ctx = canvas.getContext('2d')
-const leftPadding = 182;
-const fontSize = 23;
-const topPadding = 192 / 2;
+const leftPadding = 202;
+const fontSize = 22;
+const topPadding = 198 / 2;
 const textPadding = fontSize + 15;
 
 registerFont('src/templates/fonts/minecraft.ttf', { family: 'Sans Serif' })
@@ -14,7 +14,7 @@ module.exports = async (Discord, client, member) => {
     if(member.guild.id !== config.server.serverID) return;
 
     const guild = client.guilds.cache.get(config.server.serverID);
-    const memberCount = addSuffix(guild.members.cache.filter(member => !member.user.bot).size); 
+    const memberCount = addSuffix(guild.members.cache.size); 
     
     const welcomeCard = await loadImage('src/templates/images/welcomeCard.png');
     const profilePicture = await loadImage(member.user.displayAvatarURL({ format: 'png' }));

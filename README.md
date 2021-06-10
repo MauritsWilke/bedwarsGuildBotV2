@@ -34,6 +34,9 @@ Portfolio site: [MauritsWilke.com](https://www.mauritswilke.com)
 - Better way to test API's (REST Client)
 - Better understanding of async/await and .then/.catch
 - Enviroment variables
+- NodeJS Process
+  - process.on('event')
+  - Error handling and such
 
 ##
 

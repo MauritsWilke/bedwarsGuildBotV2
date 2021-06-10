@@ -2,7 +2,7 @@
     "name": "Bedwars Guild Bot",
     "version": "0.7.0",
     "description": "The Official Bedwars Guild Bot",
-    "prefix": "!",
+    "prefix": "d!",
     "invite": "https://discord.com/api/oauth2/authorize?client_id=845229167041314887&permissions=8&redirect_uri=https%3A%2F%2Fwww.mauritswilke.com&scope=bot",
 
     "owner": {

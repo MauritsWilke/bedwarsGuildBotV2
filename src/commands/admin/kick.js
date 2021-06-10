@@ -1,65 +1,78 @@
-const config = require('../../config.json')
+const config = require("../../config.json");
 
 module.exports = {
     name: "kick",
     description: "Kick a user",
     example: `kick <user>`,
-    aliases: [
-        "schop",
-    ],
+    aliases: ["schop"],
     args: true,
     owner: false,
     cooldown: 0 * 1000,
     canTakeIGN: false,
 
-    async run (client, message, args, Discord){
+    async run(client, message, args, Discord) {
+        const memberToKick = message.mentions.users.first();
+        const reason = args[1] ? args.slice(1).join(" ") : "None";
 
-        //REDO THIS LMAO
-
-        if (message.member.permissions.has("KICK_MEMBERS")) {
-            const member = message.mentions.users.first();
-            args[1] ? reason = args.slice(1).join(' ') : reason = "None";
-
-            if(member){
-                if(member.id == client.user.id){
-                
-                    const cantKickSelf = new Discord.MessageEmbed()
-                    .setDescription("You cannot kick the bot")
-                    .setTimestamp()
-                    .setFooter(config.name + '     ');
-                    message.channel.send(cantKickSelf);
-                    return;
-    
-                }else if(member.id == message.author.id){
-    
-                    const cantKickSelf = new Discord.MessageEmbed()
-                    .setDescription("You cannot kick yourself")
-                    .setTimestamp()
-                    .setFooter(config.name + '     ');
-                    message.channel.send(cantKickSelf);
-                    return;
-    
-                }
-                const memberTarget = message.guild.members.cache.get(member.id);
-                memberTarget.kick({ days: 0, reason: reason }).catch(error => message.channel.send(`Sorry ${message.author} I couldn't kick because I am missing permissions.`));
-                
-                const hasBeenKicked = new Discord.MessageEmbed()
-                .setTitle(`Kicked succesfull`)
-                .addFields(
-                    { name: 'User kicked:', value: member, inline: true},
-                    { name: 'Reason:', value: reason, inline: false},
-                    { name: 'Kicked by:', value: message.author, inline: true}                    
-                )
+        if (!message.member.permissions.has("KICK_MEMBERS")) {
+            const missingPermsEmbed = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(`You're missing permissions`)
+                .setThumbnail(config.images.error)
                 .setTimestamp()
-                .setFooter(config.name + '     ');
-                message.channel.send(hasBeenKicked);
-                return; 
-            
-            }else {
-                message.reply("Please include an @ of a member to kick");
-            }
-            } else {
-            message.channel.send('You do not have the permission to use this command, please contact a server admin if you think this is incorrect.');
+                .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(missingPermsEmbed);
         }
-    }
-}
+        if (!memberToKick) {
+            const provideUserEmbed = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(`Please provide a user to kick`)
+                .setThumbnail(config.images.error)
+                .setTimestamp()
+                .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(provideUserEmbed);
+        }
+        if (memberToKick.id == client.user.id) {
+            const cantKickBot = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(`You cannot kick the bot`)
+                .setThumbnail(config.images.error)
+                .setTimestamp()
+                .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(cantKickBot);
+        }
+        if (memberToKick.id == message.author.id) {
+            const cantKickSelf = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(`You cannot kick yourself`)
+                .setThumbnail(config.images.error)
+                .setTimestamp()
+                .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(cantKickSelf);
+        }
+        const target = message.guild.members.cache.get(memberToKick.id);
+        target.kick({ days: 0, reason: reason }).catch((error) => {
+            const kickErrorEmbed = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(
+                    `Something went wrong trying to kick this user\nPlease make sure the bot has the permission to kick users\n**Err:** \`\`${error}\`\``
+                )
+                .setThumbnail(config.images.error)
+                .setTimestamp()
+                .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(kickErrorEmbed);
+        });
+        const targetKickedSuccesfully = new Discord.MessageEmbed()
+            .setDescription(`Kicked succesfull`)
+            .setColor(config.colours.success)
+            .setThumbnail(config.images.success)
+            .addFields(
+                { name: "**User kicked**", value: memberToKick, inline: true },
+                { name: "**Reason**", value: reason, inline: false },
+                { name: "**Kicked by**", value: message.author, inline: true }
+            )
+            .setTimestamp()
+            .setFooter(config.name, client.user.displayAvatarURL());
+        return message.channel.send(targetKickedSuccesfully);
+    },
+};

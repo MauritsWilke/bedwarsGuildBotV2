@@ -32,6 +32,16 @@ module.exports = {
                 .setFooter(config.name, client.user.displayAvatarURL());
             return message.channel.send(provideUserEmbed);
         }
+        const target = message.guild.members.cache.get(memberToKick.id);
+        if (!target.kickable) {
+            const provideUserEmbed = new Discord.MessageEmbed()
+                .setColor(config.colours.error)
+                .setDescription(`I cannot kick that user`)
+                .setThumbnail(config.images.error)
+                .setTimestamp()
+                .setFooter(config.name, client.user.displayAvatarURL());
+            return message.channel.send(provideUserEmbed);
+        }
         if (memberToKick.id == client.user.id) {
             const cantKickBot = new Discord.MessageEmbed()
                 .setColor(config.colours.error)
@@ -50,29 +60,31 @@ module.exports = {
                 .setFooter(config.name, client.user.displayAvatarURL());
             return message.channel.send(cantKickSelf);
         }
-        const target = message.guild.members.cache.get(memberToKick.id);
-        target.kick({ days: 0, reason: reason }).catch((error) => {
-            const kickErrorEmbed = new Discord.MessageEmbed()
-                .setColor(config.colours.error)
-                .setDescription(
-                    `Something went wrong trying to kick this user\nPlease make sure the bot has the permission to kick users\n**Err:** \`\`${error}\`\``
-                )
-                .setThumbnail(config.images.error)
-                .setTimestamp()
-                .setFooter(config.name, client.user.displayAvatarURL());
-            return message.channel.send(kickErrorEmbed);
-        });
-        const targetKickedSuccesfully = new Discord.MessageEmbed()
-            .setDescription(`Kicked succesfull`)
-            .setColor(config.colours.success)
-            .setThumbnail(config.images.success)
-            .addFields(
-                { name: "**User kicked**", value: memberToKick, inline: true },
-                { name: "**Reason**", value: reason, inline: false },
-                { name: "**Kicked by**", value: message.author, inline: true }
-            )
-            .setTimestamp()
-            .setFooter(config.name, client.user.displayAvatarURL());
-        return message.channel.send(targetKickedSuccesfully);
+        target.kick({ reason: reason })
+            .then(() => {
+                const targetKickedSuccesfully = new Discord.MessageEmbed()
+                    .setDescription(`Kicked succesfull`)
+                    .setColor(config.colours.success)
+                    .setThumbnail(config.images.success)
+                    .addFields(
+                        { name: "**User kicked**", value: memberToKick, inline: false },
+                        { name: "**Reason**", value: reason, inline: false },
+                        { name: "**Kicked by**", value: message.author, inline: false }
+                    )
+                    .setTimestamp()
+                    .setFooter(config.name, client.user.displayAvatarURL());
+                return message.channel.send(targetKickedSuccesfully);
+            })
+            .catch((error) => {
+                const kickErrorEmbed = new Discord.MessageEmbed()
+                    .setColor(config.colours.error)
+                    .setDescription(
+                        `Something went wrong trying to kick this user\nPlease make sure the bot has the permission to kick users\n**Err:** \`\`${error}\`\``
+                    )
+                    .setThumbnail(config.images.error)
+                    .setTimestamp()
+                    .setFooter(config.name, client.user.displayAvatarURL());
+                return message.channel.send(kickErrorEmbed);
+            });
     },
 };

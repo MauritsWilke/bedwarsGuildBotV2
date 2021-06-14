@@ -2,7 +2,7 @@ process.stdin.resume();
 const chalk = require('chalk')
 
 const errorChar = "!";
-const warningChar = ""
+const warningChar = "⚠"
 
 module.exports = () => {
     process.on('exit', (code) => {

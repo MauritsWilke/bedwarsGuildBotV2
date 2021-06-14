@@ -3,7 +3,7 @@ const config = require('../../config.json')
 module.exports = async (client, Discord) => {
 	(function scheduleAgain() {
 		let now = new Date();
-		let millisTillDailyResets = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 15, 25, 00, 0) - now;
+		let millisTillDailyResets = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 13, 25, 00, 0) - now;
 		if (millisTillDailyResets < 0) {
 			millisTillDailyResets += 86400000; //It has already been resetted, announce again tomorrow
 		}

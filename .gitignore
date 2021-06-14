@@ -5,3 +5,7 @@ src/tests/
 .vscode/
 jsdoc.json
 Procfile
+node_modules
+dependencygraph.svg
+.dependency-cruiser.js
+dependency-graph.html

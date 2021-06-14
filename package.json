@@ -18,5 +18,8 @@
   },
   "engines": {
     "node": "15.0.0"
+  },
+  "devDependencies": {
+    "dependency-cruiser": "^10.0.1"
   }
 }

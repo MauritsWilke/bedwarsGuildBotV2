@@ -1,7 +1,6 @@
 const config = require('../../config.json')
 const utils = require('../../utils/utils')
 const chalk = require('chalk');
-const { run } = require('../../commands/admin/ban');
 
 const cooldowns = new Map();
 

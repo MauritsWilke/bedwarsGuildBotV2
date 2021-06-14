@@ -24,7 +24,8 @@
         "error": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ab0c1e57515093.59d8c6eb16d19.gif",
         "success": "https://cdn.discordapp.com/attachments/844946158400831551/851403861197193226/ezgif-3-6c01e43fd331.gif",
         "challonge": "https://assets.challonge.com/assets/og-default-9d2c9e67cc219b24e19785afa8d289899116d96512f6096e67f04b854b2d174e.png"        ,
-        "webhook": "https://cdn.iconscout.com/icon/free/png-256/webhook-555333.png" 
+        "webhook": "https://cdn.iconscout.com/icon/free/png-256/webhook-555333.png" ,
+		"leaderboard": "https://cdn.discordapp.com/attachments/844948645106810920/853927948947292160/leaderboardImage.png"
     },
 
     "changelog": [
@@ -45,7 +46,10 @@
         "serverID": "798114509205929995",
         "channels": {
             "join": "817013751827267584",
-            "leave": "817013751827267584"
+            "leave": "817013751827267584",
+			"leaderboard": "853928417791705098",
+			"testing": "828984081492082749",
+			"boosting": "817013751827267584"
         }
     }
 }

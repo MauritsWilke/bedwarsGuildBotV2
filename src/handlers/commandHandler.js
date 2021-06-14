@@ -11,7 +11,7 @@ module.exports = (client, Discord) => {
 			if (command.name) {
 				client.commands.set(command.name, command)
 			} else {
-				continue;
+				require(resolve(`./src/commands/${folder}/${files}`))(client, Discord)
 			}
 		}
 	}

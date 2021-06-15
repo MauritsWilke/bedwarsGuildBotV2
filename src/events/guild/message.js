@@ -5,6 +5,7 @@ const chalk = require('chalk');
 module.exports = async (Discord, client, message) => {
 	let args = message.content.slice(config.prefix.length).split(/ +/);
 	const event = client.messageEvents.get(message.type);
+	if(!event) return;
 	//EXECUTION
 	try {
 		event.run(client, message, args, Discord)

@@ -1,5 +1,5 @@
 // This is really messy code and should NOT be used as an example for your own bot
-// The code could be improved in many ways like a command handler, proper message handling and overall better anc cleaner code
+// The code could be improved in many ways like a command handler, proper message handling and overall better and cleaner code
 // I might do that in the future, but this is just a temp solution for a 24/7 host
 require(`dotenv`).config()
 const args = process.argv.splice(2);

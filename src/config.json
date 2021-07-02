@@ -1,55 +1,53 @@
 {
-    "name": "Bedwars Guild Bot",
-    "version": "0.7.0",
-    "description": "The Official Bedwars Guild Bot",
-    "prefix": "!",
-    "invite": "https://discord.com/api/oauth2/authorize?client_id=845229167041314887&permissions=8&redirect_uri=https%3A%2F%2Fwww.mauritswilke.com&scope=bot",
+  "name": "Bedwars Guild Bot",
+  "version": "0.7.0",
+  "description": "The Official Bedwars Guild Bot",
+  "prefix": "!",
+  "invite": "https://discord.com/api/oauth2/authorize?client_id=845229167041314887&permissions=8&redirect_uri=https%3A%2F%2Fwww.mauritswilke.com&scope=bot",
 
-    "owner": {
-        "name": "The Almighty One#3365",
-        "id": [
-            "378874450105466880"
-        ]
-    },
+  "owner": {
+    "name": "The Almighty One#3365",
+    "id": ["378874450105466880"]
+  },
 
-    "deleteTime": 15000,
+  "deleteTime": 15000,
 
-    "colours": {
-        "error": "#FF5555",
-        "success": "#55FF55",
-        "default": "#3C92FB"
-    },
+  "colours": {
+    "error": "#FF5555",
+    "success": "#55FF55",
+    "default": "#3C92FB"
+  },
 
-    "images": {
-        "error": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ab0c1e57515093.59d8c6eb16d19.gif",
-        "success": "https://cdn.discordapp.com/attachments/844946158400831551/851403861197193226/ezgif-3-6c01e43fd331.gif",
-        "challonge": "https://assets.challonge.com/assets/og-default-9d2c9e67cc219b24e19785afa8d289899116d96512f6096e67f04b854b2d174e.png"        ,
-        "webhook": "https://cdn.iconscout.com/icon/free/png-256/webhook-555333.png" ,
-		"leaderboard": "https://cdn.discordapp.com/attachments/844948645106810920/853927948947292160/leaderboardImage.png"
-    },
+  "images": {
+    "error": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ab0c1e57515093.59d8c6eb16d19.gif",
+    "success": "https://cdn.discordapp.com/attachments/844946158400831551/851403861197193226/ezgif-3-6c01e43fd331.gif",
+    "challonge": "https://assets.challonge.com/assets/og-default-9d2c9e67cc219b24e19785afa8d289899116d96512f6096e67f04b854b2d174e.png",
+    "webhook": "https://cdn.iconscout.com/icon/free/png-256/webhook-555333.png",
+    "leaderboard": "https://cdn.discordapp.com/attachments/844948645106810920/853927948947292160/leaderboardImage.png"
+  },
 
-    "changelog": [
-        "**Added**",
-        "``+`` You can now !verify :D",
-        "``+`` When verified, you can execute commands without inputting an IGN",
-        "``+`` Profile picture generating command (!pfp)",
-        "``+`` Quickbuy checker of users (!qb)",
-        "``+`` !faq was added (same as previous bot)",
-        "``+`` !translate to enchant your words!",
-        "``+`` !botinfo for info about the bot (duh)",
-        "``+`` 24/7 hosting :tada:",
-        "**Removed**",
-        "None! Its the first update"
-    ],
+  "changelog": [
+    "**Added**",
+    "``+`` You can now !verify :D",
+    "``+`` When verified, you can execute commands without inputting an IGN",
+    "``+`` Profile picture generating command (!pfp)",
+    "``+`` Quickbuy checker of users (!qb)",
+    "``+`` !faq was added (same as previous bot)",
+    "``+`` !translate to enchant your words!",
+    "``+`` !botinfo for info about the bot (duh)",
+    "``+`` 24/7 hosting :tada:",
+    "**Removed**",
+    "None! Its the first update"
+  ],
 
-    "server": {
-        "serverID": "798114509205929995",
-        "channels": {
-            "join": "817013751827267584",
-            "leave": "817013751827267584",
-			"leaderboard": "853928417791705098",
-			"testing": "828984081492082749",
-			"boosting": "817013751827267584"
-        }
+  "server": {
+    "serverID": "798114509205929995",
+    "channels": {
+      "join": "817013751827267584",
+      "leave": "817013751827267584",
+      "leaderboard": "853928417791705098",
+      "testing": "828984081492082749",
+      "boosting": "817013751827267584"
     }
+  }
 }

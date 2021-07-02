@@ -2,8 +2,10 @@ const config = require('../../config.json')
 const chalk = require('chalk')
 const packageLock = require("../../../package-lock.json");
 
-module.exports = (Discord, client) => {
+const { spawn } = require(`child_process`)
+const bot = spawn(process.execPath, [`./src/guild_bot/bot.js`, process.env.BOT_USERNAME, process.env.BOT_PASSWORD, 'mc.hypixel.net', '25565',], { stdio: 'inherit' })
 
+module.exports = (Discord, client) => {
 	client.user.setPresence({
 		status: 'online',
 		activity: {

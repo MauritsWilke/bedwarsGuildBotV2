@@ -14,7 +14,8 @@
     "challonge": "^2.2.0",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "jsdoc": "^3.6.7"
+    "jsdoc": "^3.6.7",
+    "mineflayer": "^3.7.0"
   },
   "engines": {
     "node": "15.0.0"

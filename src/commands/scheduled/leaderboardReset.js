@@ -7,7 +7,6 @@ module.exports = async (client, Discord) => {
 		if (millisTillDailyResets < 0) {
 			millisTillDailyResets += 86400000; //It has already been resetted, announce again tomorrow
 		}
-		console.log(millisTillDailyResets)
 		setTimeout(function () {
 			const announceLeaderboardResetting = new Discord.MessageEmbed()
 				.setColor(config.colours.default)

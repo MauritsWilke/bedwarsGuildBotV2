@@ -22,8 +22,7 @@ const bot = mineflayer.createBot({
 
 // _ Message logger
 bot.on(`chat`, (username, message, translate, jsonMSG) => {
-	const IGN = jsonMSG.extra[0].text.replace(/(§2Guild >|§3Officer >) (§*.*\[.{3,9}\])* /, "").replace(/ .*/, "")
-	if (username == IGN) return
+	const IGN = jsonMSG.extra[0].text.replace(/(§2Guild >|§3Officer >) §*7*(§*.\[.{3,9}\])*\s*/, "").replace(/ .*/, "")
 	if (!jsonMSG.extra[0].text.startsWith(`§3Officer >`) && !jsonMSG.extra[0].text.startsWith(`§2Guild >`)) return
 
 	const rank = jsonMSG.extra[0].text.replace(/(§2Guild >|§3Officer >) (§*.*\[.{3,9}\])* [^\s]* §*./, "").replace(/§.*/, "")
